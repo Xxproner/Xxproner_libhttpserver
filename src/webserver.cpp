@@ -766,27 +766,27 @@ MHD_Result webserver::answer_to_connection(void* cls, MHD_Connection* connection
 
     access_log(static_cast<webserver*>(cls), *(mr->complete_uri) + " METHOD: " + method);
 
-    if (0 == strcasecmp(method, http_utils::http_method_get)) {
+    if (0 == strcmp(method, http_utils::http_method_get)) {
         mr->callback = &http_resource::render_GET;
     } else if (0 == strcmp(method, http_utils::http_method_post)) {
         mr->callback = &http_resource::render_POST;
         mr->has_body = true;
-    } else if (0 == strcasecmp(method, http_utils::http_method_put)) {
+    } else if (0 == strcmp(method, http_utils::http_method_put)) {
         mr->callback = &http_resource::render_PUT;
         mr->has_body = true;
-    } else if (0 == strcasecmp(method, http_utils::http_method_delete)) {
+    } else if (0 == strcmp(method, http_utils::http_method_delete)) {
         mr->callback = &http_resource::render_DELETE;
         mr->has_body = true;
-    } else if (0 == strcasecmp(method, http_utils::http_method_patch)) {
+    } else if (0 == strcmp(method, http_utils::http_method_patch)) {
         mr->callback = &http_resource::render_PATCH;
         mr->has_body = true;
-    } else if (0 == strcasecmp(method, http_utils::http_method_head)) {
+    } else if (0 == strcmp(method, http_utils::http_method_head)) {
         mr->callback = &http_resource::render_HEAD;
-    } else if (0 ==strcasecmp(method, http_utils::http_method_connect)) {
+    } else if (0 ==strcmp(method, http_utils::http_method_connect)) {
         mr->callback = &http_resource::render_CONNECT;
-    } else if (0 == strcasecmp(method, http_utils::http_method_trace)) {
+    } else if (0 == strcmp(method, http_utils::http_method_trace)) {
         mr->callback = &http_resource::render_TRACE;
-    } else if (0 ==strcasecmp(method, http_utils::http_method_options)) {
+    } else if (0 ==strcmp(method, http_utils::http_method_options)) {
         mr->callback = &http_resource::render_OPTIONS;
     }
 
